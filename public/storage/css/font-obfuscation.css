@@ -1,0 +1,36 @@
+@font-face {
+  font-family: plusjakartasans-obf;
+  src:
+    url('/fonts/plusjakartasans-obf.woff2') format('woff2'),
+    url('/fonts/plusjakartasans-obf.woff') format('woff');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+.ob-p,
+.obfuscated {
+  font-family: plusjakartasans-obf, sans-serif !important;
+  font-variant-ligatures: none !important;
+}
+body.font-obfuscation-ready .ob-p,
+body.font-obfuscation-ready .obfuscated {
+  visibility: visible !important;
+}
+.lucide,
+.lucide-icon,
+.no-obfuscate,
+[data-lucide],
+[data-no-obfuscate],
+code,
+pre,
+svg[data-lucide] {
+  font-family: inherit !important;
+}
+
+.ob-p,
+.obfuscated {
+  font-family: 'plusjakartasans-obf', sans-serif !important;
+  font-variant-ligatures: none !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+}
