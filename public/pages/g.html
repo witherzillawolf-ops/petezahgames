@@ -108,9 +108,11 @@
     <div class="search-container ob-p"><input type="text" id="search-games" placeholder="Search..." onkeyup="filterItems()" /></div>
     <div class="category-container">
       <button class="category-btn active ob-p" data-category="">All</button> <button class="category-btn" data-category="action">Action</button>
-      <button class="category-btn ob-p" data-category="racing">Racing</button> <button class="category-btn" data-category="strategy">Strategy</button>
+      <button class="category-btn ob-p" data-category="racing">Racing</button>
+      <button class="category-btn" data-category="strategy">Strategy</button>
       <button class="category-btn ob-p" data-category="sports">Sports</button> <button class="category-btn" data-category="skill">Skill</button>
-      <button class="category-btn ob-p" data-category="shooting">Shooting</button> <button class="category-btn" data-category="2 player">2 Player</button>
+      <button class="category-btn ob-p" data-category="shooting">Shooting</button>
+      <button class="category-btn" data-category="2 player">2 Player</button>
       <button class="category-btn ob-p" data-category="io">Io</button>
     </div>
     <div class="game-container" id="imageContainer"></div>
@@ -122,13 +124,16 @@
         </div>
         <form id="addGameForm" onsubmit="addCustomGame(event)" data-no-obfuscate>
           <div class="form-group" data-no-obfuscate>
-            <label for="gameTitle" data-no-obfuscate>Game Title</label> <input type="text" id="gameTitle" required placeholder="Enter game name" data-no-obfuscate/>
+            <label for="gameTitle" data-no-obfuscate>Game Title</label>
+            <input type="text" id="gameTitle" required placeholder="Enter game name" data-no-obfuscate />
           </div>
           <div class="form-group" data-no-obfuscate>
-            <label for="gameUrl" data-no-obfuscate>Game URL</label> <input type="url" id="gameUrl" required placeholder="https://example.com/game" data-no-obfuscate/>
+            <label for="gameUrl" data-no-obfuscate>Game URL</label>
+            <input type="url" id="gameUrl" required placeholder="https://example.com/game" data-no-obfuscate />
           </div>
           <div class="form-group" data-no-obfuscate>
-            <label for="gameImage" data-no-obfuscate>Game Image</label> <input type="file" id="gameImage" required accept="image/*" data-no-obfuscate/>
+            <label for="gameImage" data-no-obfuscate>Game Image</label>
+            <input type="file" id="gameImage" required accept="image/*" data-no-obfuscate />
             <div id="imagePreview" class="image-preview" data-no-obfuscate></div>
           </div>
           <div class="form-group" data-no-obfuscate>
@@ -156,13 +161,15 @@
           <button class="popup-close" onclick="closeGameOptionsPopup()">&times;</button>
         </div>
         <div class="options-menu" data-no-obfuscate>
-          <button class="option-btn" onclick="toggleFavorite()" data-no-obfuscate><i class="far fa-star"></i> <span id="favoriteText">Favorite</span></button>
+          <button class="option-btn" onclick="toggleFavorite()">
+            <i class="far fa-star"></i> <span id="favoriteText" data-no-obfuscate>Favorite</span>
+          </button>
           <button class="option-btn" onclick="shareGame()" data-no-obfuscate><i class="fas fa-share"></i> Share Game</button>
           <button class="option-btn remove" onclick="removeGame()" data-no-obfuscate><i class="fas fa-trash"></i> Remove Game</button>
         </div>
       </div>
     </div>
-    <div id="sharePopup" class="popup-overlay">
+    <div id="sharePopup" class="popup-overlay" data-no-obfuscate>
       <div class="popup-content small">
         <div class="popup-header">
           <h3>Share Game</h3>

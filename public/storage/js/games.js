@@ -135,12 +135,18 @@ function addCustomGame(e) {
     s.readAsDataURL(n));
 }
 function openGameOptions(e, t) {
-  (t.preventDefault(), t.stopPropagation(), (currentGameId = e));
+  t.preventDefault();
+  t.stopPropagation();
+  currentGameId = e;
   games.find((t) => t.id === e);
   const a = getFavorites().includes(e);
-  ((document.getElementById('favoriteText').textContent = a ? 'Unfavorite' : 'Favorite'),
-    (document.querySelector('#gameOptionsPopup .option-btn i').className = a ? 'fas fa-star' : 'far fa-star'),
-    document.getElementById('gameOptionsPopup').classList.add('active'));
+  
+  const favEl = document.getElementById('favoriteText');
+  favEl.setAttribute('data-no-obfuscate', '');
+  Object.getOwnPropertyDescriptor(Node.prototype, 'textContent').set.call(favEl, a ? 'Unfavorite' : 'Favorite');
+  
+  document.querySelector('#gameOptionsPopup .option-btn i').className = a ? 'fas fa-star' : 'far fa-star';
+  document.getElementById('gameOptionsPopup').classList.add('active');
 }
 function closeGameOptionsPopup() {
   (document.getElementById('gameOptionsPopup').classList.remove('active'), (currentGameId = null));

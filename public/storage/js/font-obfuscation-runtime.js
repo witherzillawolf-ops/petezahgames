@@ -45,8 +45,6 @@
     ".popup",
     ".popup *",
     ".widget-button",
-    ".popup-content",
-    ".popup-content *",
     "ad",
     "google",
     "data-google *",
@@ -54,7 +52,7 @@
     ".google-anno-sa-qtx",
     ".google-anno-sa-qtx *",
     "iframe",
-    "img"
+    "img",
   ],
     forceObfuscateSelectors: ['.obfuscated', '.ob-p', '[data-obfuscate]', '.tab-title', '.menu-text', '.ui-text'],
     inputElements: []
