@@ -404,20 +404,20 @@
           <h3>App Options</h3>
           <button class="popup-close" onclick="closeAppOptionsPopup()">&times;</button>
         </div>
-        <div class="options-menu">
-          <button class="option-btn" onclick="toggleFavorite()"><i class="far fa-star"></i> <span id="favoriteText">Favorite</span></button>
-          <button class="option-btn" onclick="shareApp()"><i class="fas fa-share"></i> Share App</button>
-          <button class="option-btn remove" onclick="removeApp()"><i class="fas fa-trash"></i> Remove App</button>
+        <div class="options-menu" data-no-obfuscate>
+          <button class="option-btn" onclick="toggleFavorite()"><i class="far fa-star"></i> <span id="favoriteText" data-no-obfuscate>Favorite</span></button>
+          <button class="option-btn" onclick="shareApp()" data-no-obfuscate><i class="fas fa-share"></i> Share App</button>
+          <button class="option-btn remove" onclick="removeApp()" data-no-obfuscate><i class="fas fa-trash"></i> Remove App</button>
         </div>
       </div>
     </div>
-    <div id="sharePopup" class="popup-overlay">
+    <div id="sharePopup" class="popup-overlay" data-no-obfuscate>
       <div class="popup-content small">
         <div class="popup-header">
           <h3>Share App</h3>
           <button class="popup-close" onclick="closeSharePopup()">&times;</button>
         </div>
-        <div class="share-content">
+        <div class="share-content" data-no-obfuscate>
           <p>Share this app with others:</p>
           <div class="share-link-container">
             <input type="text" id="shareLink" readonly="readonly" />

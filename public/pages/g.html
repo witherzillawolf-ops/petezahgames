@@ -155,10 +155,10 @@
           <h3>Game Options</h3>
           <button class="popup-close" onclick="closeGameOptionsPopup()">&times;</button>
         </div>
-        <div class="options-menu">
-          <button class="option-btn" onclick="toggleFavorite()"><i class="far fa-star"></i> <span id="favoriteText">Favorite</span></button>
-          <button class="option-btn" onclick="shareGame()"><i class="fas fa-share"></i> Share Game</button>
-          <button class="option-btn remove" onclick="removeGame()"><i class="fas fa-trash"></i> Remove Game</button>
+        <div class="options-menu" data-no-obfuscate>
+          <button class="option-btn" onclick="toggleFavorite()" data-no-obfuscate><i class="far fa-star"></i> <span id="favoriteText">Favorite</span></button>
+          <button class="option-btn" onclick="shareGame()" data-no-obfuscate><i class="fas fa-share"></i> Share Game</button>
+          <button class="option-btn remove" onclick="removeGame()" data-no-obfuscate><i class="fas fa-trash"></i> Remove Game</button>
         </div>
       </div>
     </div>
@@ -168,7 +168,7 @@
           <h3>Share Game</h3>
           <button class="popup-close" onclick="closeSharePopup()">&times;</button>
         </div>
-        <div class="share-content">
+        <div class="share-content" data-no-obfuscate>
           <p>Share this game with others:</p>
           <div class="share-link-container">
             <input type="text" id="shareLink" readonly="readonly" />
