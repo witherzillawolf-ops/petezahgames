@@ -155,8 +155,11 @@ function createTab(e = store.homepage) {
   const t = scramjet.createFrame(),
     n = { id: nextTabId++, title: 'New Tab', url: e, frame: t, favicon: getFaviconUrl(e), zoomLevel: store.zoomLevel, muted: !1, pinned: !1 };
   return (
+    (t.frame.style.opacity = '0'),
+    (t.frame.style.transition = 'opacity 0.27s ease'),
     (t.frame.src = 'petezah://newtab' === e ? '/newpage.html' : e),
     (t.frame.onload = function () {
+      t.frame.style.opacity = '1';
       try {
         const e = t.frame.contentDocument;
         e && (e.title.includes('Just a moment') || e.title.includes('Checking your browser')) && (t.frame.src = '/static/google-embed.html#' + n.url);

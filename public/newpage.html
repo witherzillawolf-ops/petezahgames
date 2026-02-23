@@ -516,6 +516,37 @@
         color: #0a1d37;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-1 {
+        opacity: 0;
+        animation: fadeUp 0.6s ease forwards;
+        animation-delay: 0.1s;
+      }
+      .fade-in-2 {
+        opacity: 0;
+        animation: fadeUp 0.6s ease forwards;
+        animation-delay: 0.3s;
+      }
+      .fade-in-3 {
+        opacity: 0;
+        animation: fadeUp 0.6s ease forwards;
+        animation-delay: 0.5s;
+      }
+      .fade-in-4 {
+        opacity: 0;
+        animation: fadeUp 0.6s ease forwards;
+        animation-delay: 0.7s;
+      }
     </style>
   </head>
   <body>
@@ -613,10 +644,10 @@
       </div>
     </div>
     <br /><br /><br /><br /><br />
-    <h1>Pete Proxy</h1>
-    <p id="dynamicParagraph">(TEXT)</p>
-    <div id="search-container">
-      <form id="uv-form">
+    <h1 class="fade-in-1">Pete Proxy</h1>
+    <p id="dynamicParagraph" class="fade-in-2">(TEXT)</p><br>
+    <div id="search-container" class="fade-in-3">
+      <form id="uv-form" style="margin-top: -10px;">
         <input id="scram-search-engine" value="https://duckduckgo.com/?q=%s" type="hidden" />
         <input id="uv-address" type="text" class="search-bar-home url-input" placeholder="Search or enter a URL" />
         <button type="submit" class="search-button">SEARCH <i class="fa-solid fa-magnifying-glass"></i></button>
@@ -626,8 +657,8 @@
         <pre id="uv-error-code"></pre>
       </div>
     </div>
-    <br>
-    <div class="pinned-icons" style="display: flex; justify-content: center; align-items: center; gap: 15px">
+    <br />
+    <div class="pinned-icons fade-in-4" style="display: flex; justify-content: center; align-items: center; gap: 15px">
       <a href="/scramjet/https%3A%2F%2Ftiktok.com" style="display: inline-block"
         ><img
           src="/storage/ag/apps/tiktok/IMG_5335.png"
@@ -666,10 +697,10 @@
     <div id="time"></div>
     <br /><br /><br />
     <div data-no-obfuscate>
-    <script>
-      atOptions = { key: 'fff0d2c80516cd337c5f739a130b4384', format: 'iframe', height: 60, width: 468, params: {} };
-    </script>
-    <script src="https://www.highperformanceformat.com/fff0d2c80516cd337c5f739a130b4384/invoke.js"></script>
+      <script>
+        atOptions = { key: 'fff0d2c80516cd337c5f739a130b4384', format: 'iframe', height: 60, width: 468, params: {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/fff0d2c80516cd337c5f739a130b4384/invoke.js"></script>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/dreamland"></script>
     <script src="/baremux/index.js"></script>

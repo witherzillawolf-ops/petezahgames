@@ -33,6 +33,9 @@ html {
   color: var(--text-color);
   overflow: hidden;
 }
+body {
+  background: #0a1d37;
+}
 img {
   pointer-events: none;
 }

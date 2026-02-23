@@ -81,10 +81,10 @@ function handleSwipe() {
 const images = [
   { src: '/storage/images/main/highway-racer.jpeg', caption: 'Highway Racer' },
   { src: '/storage/images/main/buildnow.jpeg', caption: 'Buildnow.gg' },
-  { src: '/storage/ag/original/slope/IMG_5256.jpeg', caption: 'Slope' },
+  { src: '/storage/ag/originals/slope/IMG_5256.jpeg', caption: 'Slope' },
   { src: '/storage/images/main/clash.jpeg', caption: 'Clash Royale' },
   { src: '/storage/images/main/superstarcar.jpeg', caption: 'Superstar Car' },
-  { src: '/storage/ag/original/yohoho/IMG_5302.jpeg', caption: 'YoHoHo!' }
+  { src: '/storage/ag/originals/yohoho/IMG_5302.jpeg', caption: 'YoHoHo!' }
 ];
 let currentIndex = 0;
 const imageElement = document.getElementById('large-image'),
