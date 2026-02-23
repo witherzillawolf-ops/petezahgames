@@ -67,9 +67,9 @@ function updateActiveNavLink(src) {
 function fadeToSrc(src) {
   mainFrame.style.transition = 'opacity 0.27s ease';
   mainFrame.style.opacity = '0';
-  setTimeout(() => {
+  mainFrame.addEventListener('transitionend', () => {
     mainFrame.src = src;
-  }, 270);
+  }, { once: true });
 }
 
 isMobile() ? sidebar.classList.add('mobile-hidden') : (sidebar.classList.add('collapsed'), mainContent.classList.remove('sidebar-expanded'));
