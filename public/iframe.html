@@ -219,6 +219,65 @@
         justify-content: center;
         align-items: center;
       }
+      .fullscreen-center-btn {
+        display: none;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .fullscreen-reveal-btn {
+        display: none;
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+        padding: 2px 14px;
+        background: rgba(26, 35, 50, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 6px;
+        color: #fff;
+        font-size: 10px;
+      }
+      .iframe-container:fullscreen .fullscreen-center-btn,
+      .iframe-container:-webkit-full-screen .fullscreen-center-btn,
+      .iframe-container:fullscreen .fullscreen-reveal-btn,
+      .iframe-container:-webkit-full-screen .fullscreen-reveal-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .iframe-container:fullscreen:hover .fullscreen-center-btn,
+      .iframe-container:-webkit-full-screen:hover .fullscreen-center-btn {
+        opacity: 1;
+      }
+      .iframe-container:fullscreen.hide-controls .fullscreen-center-btn,
+      .iframe-container:-webkit-full-screen.hide-controls .fullscreen-center-btn {
+        display: none;
+      }
+      .iframe-container:fullscreen.hide-controls:hover .fullscreen-reveal-btn,
+      .iframe-container:-webkit-full-screen.hide-controls:hover .fullscreen-reveal-btn {
+        opacity: 1;
+      }
+      .iframe-container:fullscreen,
+      .iframe-container:-webkit-full-screen {
+        border-width: 8px;
+      }
+      .iframe-container:fullscreen .controls-wrapper,
+      .iframe-container:-webkit-full-screen .controls-wrapper {
+        display: flex;
+      }
+      .iframe-container:fullscreen.hide-controls .controls-wrapper,
+      .iframe-container:-webkit-full-screen.hide-controls .controls-wrapper {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -230,6 +289,9 @@
         </div>
         <div class="controls-wrapper">
           <div class="controls-left">
+            <div class="control-btn" style="overflow: hidden; padding: 0">
+              <img src="storage/images/logo-png-removebg-preview.png" alt="Logo" style="width: 28px; height: 28px; object-fit: contain" />
+            </div>
             <div class="control-btn" onclick='window.open(document.getElementById("myIframe").src,"_blank")'>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -303,6 +365,46 @@
             </div>
           </div>
         </div>
+        <div class="fullscreen-center-btn">
+          <div
+            class="control-btn"
+            id="hideControlsBtn"
+            onclick="toggleHideControls()"
+            style="width: auto; padding: 4px 10px; gap: 6px; display: flex; align-items: center; opacity: 0.75; height: 29px"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"></path>
+              <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+            </svg>
+            <span style="font-size: 12px; font-weight: 500">Hide Buttons</span>
+          </div>
+        </div>
+        <div class="fullscreen-reveal-btn" id="revealControlsBtn" onclick="toggleHideControls()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </div>
       </div>
       <div class="ad-container">
         <script>
@@ -338,37 +440,59 @@
         const e = localStorage.getItem('iframeUrl');
         e ? (iframe.src = e) : console.error('No URL parameter provided and no saved URL found.');
       }
+
       let currentZoom = 1;
-      ((window.performZoomIn = function () {
+
+      window.performZoomIn = function () {
         const e = document.getElementById('iframeWrapper'),
           r = document.querySelector('.iframe-container');
         if (!e || !r) return;
         currentZoom = Math.min(currentZoom + 0.25, 2);
         const o = r.offsetWidth / currentZoom,
           t = r.offsetHeight / currentZoom;
-        ((e.style.transform = `scale(${currentZoom})`), (e.style.width = o + 'px'), (e.style.height = t + 'px'), (r.style.overflow = 'auto'));
-      }),
-        (window.performZoomOut = function () {
-          const e = document.getElementById('iframeWrapper'),
-            r = document.querySelector('.iframe-container');
-          if (!e || !r) return;
-          currentZoom = Math.max(currentZoom - 0.25, 0.5);
-          const o = r.offsetWidth / currentZoom,
-            t = r.offsetHeight / currentZoom;
-          ((e.style.transform = `scale(${currentZoom})`),
-            (e.style.width = o + 'px'),
-            (e.style.height = t + 'px'),
-            1 === currentZoom && (r.style.overflow = 'hidden'));
-        }),
-        (window.performFullscreen = function () {
+        e.style.transform = `scale(${currentZoom})`;
+        e.style.width = o + 'px';
+        e.style.height = t + 'px';
+        r.style.overflow = 'auto';
+      };
+
+      window.performZoomOut = function () {
+        const e = document.getElementById('iframeWrapper'),
+          r = document.querySelector('.iframe-container');
+        if (!e || !r) return;
+        currentZoom = Math.max(currentZoom - 0.25, 0.5);
+        const o = r.offsetWidth / currentZoom,
+          t = r.offsetHeight / currentZoom;
+        e.style.transform = `scale(${currentZoom})`;
+        e.style.width = o + 'px';
+        e.style.height = t + 'px';
+        if (currentZoom === 1) r.style.overflow = 'hidden';
+      };
+
+      window.performFullscreen = function () {
+        const e = document.querySelector('.iframe-container');
+        if (!e) return;
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+          e.classList.remove('hide-controls');
+        } else {
+          e.requestFullscreen().catch((err) => {
+            console.error('Fullscreen error:', err);
+          });
+        }
+      };
+
+      window.toggleHideControls = function () {
+        const e = document.querySelector('.iframe-container');
+        e.classList.toggle('hide-controls');
+      };
+
+      document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
           const e = document.querySelector('.iframe-container');
-          e &&
-            (document.fullscreenElement
-              ? document.exitFullscreen()
-              : e.requestFullscreen().catch((e) => {
-                  console.error('Fullscreen error:', e);
-                }));
-        }));
+          e.classList.remove('hide-controls');
+        }
+      });
     </script>
     <script type="text/javascript" src="//www.highperformanceformat.com/fee48967b89db2d0bd32a6c670ffa744/invoke.js"></script>
     <script src="/storage/js/settings.js"></script>
