@@ -181,3 +181,13 @@ window.addEventListener('message', (e) => {
   if (e.data.type === 'login_success' || e.data.type === 'signup_success') fadeToSrc('pages/settings/p2.html');
   if (e.data.type === 'logout') fadeToSrc('pages/settings/p.html');
 });
+
+document.addEventListener('mouseleave', (e) => {
+  if (e.target !== e.currentTarget) e.target.blur();
+}, true);
+
+window.addEventListener('blur', () => {
+  document.querySelectorAll(':hover').forEach(el => {
+    el.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
+  });
+});
