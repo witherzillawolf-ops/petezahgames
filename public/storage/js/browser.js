@@ -363,6 +363,8 @@ function updateAddressBar() {
     (o.startsWith('petezah://newtab') && (n.frame.frame.src = '/newpage.html'),
       (o.startsWith('https://www.youtube.com') || o.startsWith('youtube.com') || 'www.youtube.com' === o) &&
         (n.frame.frame.src = '/static/google-embed.html#' + o),
+      (o.startsWith('https://www.reddit.com') || o.startsWith('reddit.com') || 'www.reddit.com' === o) &&
+        (n.frame.frame.src = '/static/google-embed.html#' + o),
       (o.startsWith('https://vortexos.net') ||
         o.startsWith('vortexos.net') ||
         'https://vtx.chat' === o ||
