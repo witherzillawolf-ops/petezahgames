@@ -112,12 +112,11 @@ async function minifyFiles() {
 
           const comment =
             `<!--\n` +
-            `  Copyright (c) ${year} PeteZahGames. All rights reserved.\n` +
-            `  Author: PeteZah\n` +
+            `  Copyright (c) ${year} Pete Zah. All rights reserved.\n` +
+            `  Author: Pete Zah\n` +
             `  Last Updated: ${dateStr}\n` +
             `  Licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).\n` +
-            `  Source: https://github.com/PeteZah-Games/PeteZahGames\n` +
-            `  Contact: https://discord.petezahgames.com\n` +
+            `  Contact: https://discord.com/invite/cYjHFDguxS\n` +
             `-->\n`;
           result = comment + result;
         }
