@@ -6,7 +6,7 @@
   "license": "AGPL-3.0-only",
   "type": "module",
   "scripts": {
-    "export:web": "expo export -p web"
+    "export:web": "expo export -p web",
     "start": "node server.js",
     "start:prod": "NODE_ENV=production node --expose-gc server.js",
     "format": "prettier --write .",
